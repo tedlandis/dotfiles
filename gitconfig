@@ -10,6 +10,7 @@
 	unstage = reset HEAD
   sm = smart-merge
   sp = smart-pull
+  sl = smart-log
   s = status
   rbm = rebase master
 	ctags = !.git/hooks/ctags
