@@ -4,4 +4,9 @@ vim/.netrwhist
 *.swp
 *.swo
 vim/tmp/*.*
+vim/view/*.*
 tmux*.log
+bundle/cache
+vim/bundle
+tags.lock
+tags.temp

@@ -1,0 +1,22 @@
+# Load custom completions
+# Reload on-my-zsh to deal with compinit issues
+# source: https://github.com/zsh-users/zsh-completions/issues/277#issuecomment-72253611
+fpath=($HOME/.zsh-completions $fpath)
+
+# homebrew shell completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+source $ZSH/oh-my-zsh.sh
+
+source $HOME/Development/dotfiles.local/zsh/aliases
+
+export EDITOR=vim
+
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $HOME/Development/dotfiles.local/zsh/fzf
+
+alias dea='docker-compose exec application'
+alias deat='docker-compose exec -e MIX_ENV=test application'

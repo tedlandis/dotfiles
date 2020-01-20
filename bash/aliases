@@ -6,32 +6,6 @@ alias bi='bundle install --without production'
 alias be='bundle exec'
 
 #*****************************************************************************
-# Rails
-#*****************************************************************************
-
-function ss {
-  if [ -e script/rails ]; then
-    script/rails server $@
-  else
-    script/server $@
-  fi
-}
-function sc {
-  if [ -e script/rails ]; then
-    script/rails console $@
-  else
-    script/console $@
-  fi
-}
-function sg {
-  if [ -e script/rails ]; then
-    script/rails generate $@
-  else
-    script/generate $@
-  fi
-}
-
-#*****************************************************************************
 # Rails application size
 # http://gilesbowkett.blogspot.com/2011/03/use-wc-l-for-quick-overviews-of-new.html
 #*****************************************************************************
@@ -64,14 +38,14 @@ alias flushcache='dscacheutil -flushcache'
 alias memcache-start='memcached -vv'
 alias myip="ifconfig | grep inet"
 alias tmux="TERM=screen-256color-bce tmux"
-alias wtf='cat ~/Source/dotfiles/bash/aliases'
+alias wtf='cat ~/Development/dotfiles.local/bash/aliases'
 
 #*****************************************************************************
 # Shortcuts
 #*****************************************************************************
 
-alias cds='cd ~/Source/apps'
-alias cdd="cd ~/Source/dotfiles/"
+alias cds='cd ~/Development/apps'
+alias cdd="cd ~/Development/dotfiles.local/"
 alias b="boom open"
 
 #*****************************************************************************
@@ -91,9 +65,16 @@ alias prod='heroku -r production'
 alias stag='heroku -r staging'
 
 #*****************************************************************************
-# Zeus
+# Docker
 #*****************************************************************************
-#
-alias zc='zeus cucumber features'
-alias zs='zeus rspec spec'
-alias zr='zeus rake'
+
+alias docset='eval $(docker-machine env)'
+
+# Include custom aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+#*****************************************************************************
+# Elixir
+#*****************************************************************************
+
+alias xref='mix xref graph --format dot && dot -Tpng xref_graph.dot -o xref_graph.png && open xref_graph.png'
